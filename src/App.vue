@@ -44,17 +44,31 @@
 </template>
 
 <script>
+import userdb from '@/db/user.js';
 import HelloWorld from './components/HelloWorld';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      Usuarios:[]
+    }
+    },
+
 
   components: {
     HelloWorld,
   },
 
-  data: () => ({
-    //
-  }),
+  
+  created (){
+    this.initialize;
+  },
+
+  methods: {
+    async initialize(){
+      this.Usuarios = await userdb.getUsuario;
+    }
+  }
 };
 </script>
