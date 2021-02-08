@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { UsuarioCollection } from '@/firebase.js';
 import HelloWorld from './components/HelloWorld';
 
 export default {
@@ -53,8 +54,14 @@ export default {
     HelloWorld,
   },
 
-  data: () => ({
-    //
-  }),
+  data() {
+    return {
+      Usuarios:[]
+    }
+  },
+  async created (){
+    this.Usuarios= await UsuarioCollection.get();
+    console.log(this.Usuarios);
+  },
 };
 </script>

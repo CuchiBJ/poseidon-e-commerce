@@ -16,8 +16,16 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 const UsuarioCollection = db.collection("Usuario");
+const clientesCollection = db.collection("clientes");
+const compraCollection = db.collection("compra");
+const productosCollection = db.collection("productos");
+const ventaCollection = db.collection("venta");
 
 export {
   firebase,
-  UsuarioCollection
+  UsuarioCollection,
+  clientesCollection,
+  compraCollection,
+  productosCollection,
+  ventaCollection
 };
