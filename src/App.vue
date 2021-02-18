@@ -1,67 +1,21 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <HelloWorld/>
-    </v-main>
-  </v-app>
+  <v-app dark>
+    <v-progress-linear
+      :active="$store.state.loading"
+      :indeterminate="$store.state.loading"
+      absolute
+      top
+      color="orange accent-4"
+    ></v-progress-linear>
+    <router-view />
+    <v-snackbar v-model="$store.state.snackBar" timeout="4000" top>
+      {{ $store.state.snackText }}
+    </v-snackbar>
+  </v-app> 
 </template>
 
 <script>
-import { UsuarioCollection } from '@/firebase.js';
-import HelloWorld from './components/HelloWorld';
-
-export default {
-  name: 'App',
-
-  components: {
-    HelloWorld,
-  },
-
-  data() {
-    return {
-      Usuarios:[]
-    }
-  },
-  async created (){
-    this.Usuarios= await UsuarioCollection.get();
-    console.log(this.Usuarios);
-  },
-};
+  export default {
+    name: "App"
+  }
 </script>

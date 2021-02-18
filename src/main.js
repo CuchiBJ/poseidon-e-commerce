@@ -6,9 +6,6 @@ import vuetify from './plugins/vuetify';
 
 Vue.config.productionTip = false
 
-console.log("lalaalald");
-
-
 new Vue({
   router,
   store,

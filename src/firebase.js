@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
+import "firebase/auth";
 
 var firebaseConfig = {
   apiKey:               process.env.VUE_APP_APIKEY,
@@ -15,6 +16,10 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
+const auth = firebase.auth();
+
+auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+
 const UsuarioCollection = db.collection("Usuario");
 const clientesCollection = db.collection("clientes");
 const compraCollection = db.collection("compra");
@@ -23,6 +28,7 @@ const ventaCollection = db.collection("venta");
 
 export {
   firebase,
+  auth,
   UsuarioCollection,
   clientesCollection,
   compraCollection,

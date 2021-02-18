@@ -1,6 +1,27 @@
-import { UsuarioCollection } from '@/firebase.js';
+import { UsuarioCollection, auth } from '@/firebase.js';
+
 export default {
-  async getUsuario() {
+  async getUser(){
+    if (auth.currentUser) { 
+      let user = await UsuarioCollection
+        .doc(auth.currentUser.uid)
+        .get()
+        .then(function (doc) {
+          if (doc.exists) {
+            return doc.data();
+          } else {
+            console.log("No such document!");
+          }
+        })
+        .catch(function (error) {
+          console.log("Error getting document:", error);
+        });
+      return user
+    } else {
+      return {nombre: null}
+    }
+  },
+  async getUsers() {
     let usersData = [];
     let users = await UsuarioCollection.get()
       .then((querySnapshot) => {
