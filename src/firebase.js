@@ -26,6 +26,8 @@ const compraCollection = db.collection("compra");
 const productosCollection = db.collection("productos");
 const ventaCollection = db.collection("venta");
 
+
+
 export {
   firebase,
   auth,
