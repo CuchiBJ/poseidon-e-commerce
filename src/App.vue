@@ -7,6 +7,7 @@
       top
       color="orange accent-4"
     ></v-progress-linear>
+    <Nav v-if="isLoginPage"></Nav>
     <router-view />
     <v-snackbar v-model="$store.state.snackBar" timeout="4000" top>
       {{ $store.state.snackText }}
@@ -15,7 +16,25 @@
 </template>
 
 <script>
+  import Nav from '@/components/NavBar'
+
   export default {
-    name: "App"
+    name: "App",
+    data(){
+      return {
+        page: null
+      }
+    },
+    components:{
+      Nav
+    },
+    updated(){
+      this.page = this.$router.currentRoute.name;
+    },
+    computed:{
+      isLoginPage(){
+        return !(this.page == 'Login');
+      }
+    }
   }
 </script>

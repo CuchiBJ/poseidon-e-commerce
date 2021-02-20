@@ -1,3 +1,5 @@
 <template>
-  <div> Dash view </div>
+  <div>
+    dash view
+  </div>
 </template>

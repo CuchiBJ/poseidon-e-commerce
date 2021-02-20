@@ -1,6 +1,6 @@
  <template>
    <div class="login-dark fill-height"> 
-     <v-container>
+     <v-container class="fill-height">
        <v-row align="center" justify="center">
          <v-col cols="12" sm="5" md="4">
            <v-card class="elevation-12" dark>
@@ -30,6 +30,7 @@
  </template>
  
  <script>
+
  import { auth, UsuarioCollection } from "@/firebase.js";
  export default {
    name: "Login",
@@ -46,9 +47,6 @@
          v => (v && v.length >= 4) || 'La contraseña debe tener al menos 8 caracteres'],
        valid: false
      };
-   },
-   created(){
-     console.log(auth)
    },
    methods: {
      async login() {
