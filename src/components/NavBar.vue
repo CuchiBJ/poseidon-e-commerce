@@ -11,7 +11,7 @@
 
           <v-spacer></v-spacer>
 
-          <v-toolbar-items>
+          <v-toolbar-items v-if="idAdmin">
             <v-list-item> Panel </v-list-item>
             <v-list-item> Productos </v-list-item>
             <v-list-item> Compras </v-list-item>
@@ -19,7 +19,13 @@
             <v-list-item> Clientes </v-list-item>
             <v-list-item> Proovedores </v-list-item>
             <v-list-item> Configuracion </v-list-item>
-              
+          </v-toolbar-items>
+
+          <v-toolbar-items v-else>
+            <v-list-item> Home </v-list-item>
+            <v-list-item> Productos </v-list-item>
+            <v-list-item> Compras </v-list-item>
+            <v-list-item> Carrito </v-list-item>
           </v-toolbar-items>
 
           <v-btn icon>
@@ -28,3 +34,29 @@
         </v-toolbar>
   </div>
 </template>
+
+<script>
+
+export default {
+  name: "NavBar",
+  data() {
+    return {
+      user: null,
+    }
+  },
+  components: {
+  },
+  computed:{
+    isAdmin(){    
+      return this.user.rol == "admin";
+    }
+  },
+  async created(){
+    this.user = await this.$store.getters.user(this.$store)
+
+  },
+  methods: {
+    
+  }
+};
+</script>

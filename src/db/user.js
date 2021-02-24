@@ -2,6 +2,7 @@ import { UsuarioCollection, auth } from '@/firebase.js';
 
 export default {
   async getUser(){
+    console.log(auth.currentUser.uid)
     if (auth.currentUser) { 
       let user = await UsuarioCollection
         .doc(auth.currentUser.uid)
