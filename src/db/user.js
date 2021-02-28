@@ -1,15 +1,18 @@
 import { UsuarioCollection, auth } from '@/firebase.js';
+import { User } from '../model/user.js'
 
 export default {
   async getUser(){
-    console.log(auth.currentUser.uid)
     if (auth.currentUser) { 
       let user = await UsuarioCollection
         .doc(auth.currentUser.uid)
         .get()
         .then(function (doc) {
           if (doc.exists) {
-            return doc.data();
+            let aux = doc.data();
+            let user = new User(auth.currentUser.uid ,aux.nickname, auth.currentUser.email, aux.rol);
+            console.log(user)
+            return user;
           } else {
             console.log("No such document!");
           }
