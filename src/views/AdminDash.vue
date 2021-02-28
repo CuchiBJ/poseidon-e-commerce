@@ -1,8 +1,38 @@
 <template >
+
     <v-container>
       <v-row class="d-flex justify-space-between">
          <v-col cols="6">
-          laallalasssss
+          <v-card class="mt-4" width="800">
+            <v-sheet class="v-sheet--offset mx-auto" color="cyan" elevation="12" max-width="calc(100% - 32px)">
+              <v-sparkline :labels="labels" :value="value"  color="white" line-width="2" padding="16">
+              
+              </v-sparkline>
+            </v-sheet>
+
+            <v-card-text class="pt-0">
+              <div class="title font-weight-light mb-2">
+                  Compras
+              </div>
+              <div class="subheading font-weight-light grey--text">
+                Ultima semana
+              </div>
+              <v-divider class="my-2"></v-divider>
+              <v-icon
+                class="mr-2"
+                small
+              >
+                mdi-clock
+              </v-icon>
+              <span class="caption grey--text font-weight-light">last registration 26 minutes ago</span>
+            </v-card-text>
+          </v-card>
+          <select v-model="selected">
+            <option disabled value="">Seleccione un elemento</option>
+            <option>Diario</option>
+            <option>Semanal</option>
+            <option>Mensual</option>
+          </select>
          </v-col>
          <v-col cols="6">
           <v-data-table
@@ -19,6 +49,20 @@
                 </v-toolbar>
             </template>
           </v-data-table>
+          <v-data-table
+            :headers="headers"
+            :items="desserts"
+            :search="search"
+            :items-per-page="5"
+          >
+            <template v-slot:top>
+                <v-toolbar flat>
+                  <v-toolbar-title class="text--primary font-weight-medium">Stock</v-toolbar-title>
+                  <v-divider class="mx-4" inset vertical></v-divider>
+                  <v-spacer></v-spacer>
+                </v-toolbar>
+            </template>
+          </v-data-table>
          </v-col>
       </v-row>
     </v-container> 
@@ -30,6 +74,25 @@ export default {
   name: "AdminPanel",
   data() {
     return {
+      selected: '',
+      labels: [
+        'Lunes',
+        'Martes',
+        'Miercoles',
+        'Jueves',
+        'Viernes',
+        'Sabado',
+        'Domingo',
+      ],
+      value: [
+        200,
+        675,
+        410,
+        390,
+        310,
+        460,
+        250,
+      ],
       search: '',
         headers: [
           {

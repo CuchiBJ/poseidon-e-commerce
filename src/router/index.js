@@ -16,6 +16,12 @@ const routes = [
     name: "dash",
     component: () =>
       import("../views/dash.vue"),
+  },
+  {
+    path: "/productos",
+    name: "productos",
+    component:() =>
+      import("../views/productos.vue"),
   }
 ]
 

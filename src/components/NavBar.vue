@@ -11,9 +11,9 @@
 
           <v-spacer></v-spacer>
 
-          <v-toolbar-items v-if="idAdmin">
+          <v-toolbar-items>
             <v-list-item> Panel </v-list-item>
-            <v-list-item> Productos </v-list-item>
+            <v-list-item> <router-link to="/productos"> Productos </router-link></v-list-item>
             <v-list-item> Compras </v-list-item>
             <v-list-item> Ventas </v-list-item>
             <v-list-item> Clientes </v-list-item>
@@ -21,9 +21,9 @@
             <v-list-item> Configuracion </v-list-item>
           </v-toolbar-items>
 
-          <v-toolbar-items v-else>
+          <v-toolbar-items>
             <v-list-item> Home </v-list-item>
-            <v-list-item> Productos </v-list-item>
+            <v-list-item><router-link to="/productos"> Productos </router-link></v-list-item>
             <v-list-item> Compras </v-list-item>
             <v-list-item> Carrito </v-list-item>
           </v-toolbar-items>
