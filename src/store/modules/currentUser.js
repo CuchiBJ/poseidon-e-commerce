@@ -9,7 +9,7 @@ const mutations = {
     state.currentUser = user;
   }
 }
-
+ 
 const actions = {}
 
 const getters = {
