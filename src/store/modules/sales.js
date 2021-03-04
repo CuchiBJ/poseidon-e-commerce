@@ -13,7 +13,7 @@ const mutations = {
 const actions = {}
 
 const getters = {
-  user: state => async (store) => {
+  getSales: state => async (store) => {
     if (state.sales == null) {
       let auxsales = await saleDb.getsales();
       store.commit('saveSales', auxsales);

@@ -5,7 +5,7 @@ const state = {
 }
 
 const mutations = {
-  savebuys: (state, buys) =>{
+  savePurchases: (state, buys) =>{
     state.buys = buys;
   }
 }
@@ -13,7 +13,7 @@ const mutations = {
 const actions = {}
 
 const getters = {
-  user: state => async (store) => {
+  getPurchases: state => async (store) => {
     if (state.buys == null) {
       let auxbuys = await buyDb.getbuys();
       store.commit('savebuys', auxbuys);
