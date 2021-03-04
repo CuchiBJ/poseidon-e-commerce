@@ -13,7 +13,7 @@ const mutations = {
 const actions = {}
 
 const getters = {
-  user: state => async (store) => {
+  getClients: state => async (store) => {
     if (state.clients == null) {
       let auxclients = await clientDb.getClients();
       store.commit('saveClients', auxclients);

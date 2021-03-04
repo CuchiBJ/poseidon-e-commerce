@@ -20,7 +20,7 @@ const auth = firebase.auth();
 
 auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
 
-const UsuarioCollection = db.collection("Usuario");
+const usersCollection = db.collection("users");
 const clientsCollection = db.collection("clients");
 const purchasesCollection = db.collection("purchases");
 const productsCollection = db.collection("products");
@@ -29,7 +29,7 @@ const salesCollection = db.collection("sales");
 export {
   firebase,
   auth,
-  UsuarioCollection,
+  usersCollection,
   clientsCollection,
   purchasesCollection,
   productsCollection,

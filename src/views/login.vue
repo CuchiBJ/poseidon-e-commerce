@@ -31,7 +31,7 @@
  
  <script>
 
- import { auth, UsuarioCollection } from "@/firebase.js";
+ import { auth } from "@/firebase.js";
  export default {
    name: "Login",
    data() {
@@ -51,9 +51,7 @@
    methods: {
      async login() {
        this.$store.commit('activateLoading')
-       // Sign in with email and pass.
        auth.signOut();
-       
        await auth
          .signInWithEmailAndPassword(this.email, this.password)
          .catch(function (error) {
@@ -68,27 +66,12 @@
            }
            console.log(error);
            return;
-           // [END_EXCLUDE]
          });
-       // Aca agarro los datos del user que se acaba de logear
-       var user = await UsuarioCollection
-         .doc(auth.currentUser.uid)
-         .get()
-         .then(function (doc) {
-           if (doc.exists) {
-             return doc.data();
-           } else {
-             console.log("No such document!");
-           }
-         })
-         .catch(function (error) {
-           console.log("Error getting document:", error);
-         });
-       this.$store.commit("saveCurrentUser", user);
-       this.$router.push({ name: "dash" });
- 
-       this.$store.commit('deactivateLoading')
-       this.$store.commit('activeSnack', 'Sesion iniciada')
+        let user = this.$store.getters.user(this.$store)
+        console.log(user);
+        this.$router.push({ name: "dash" });
+        this.$store.commit('deactivateLoading')
+        this.$store.commit('activeSnack', 'Sesion iniciada')
      },
    },
  };

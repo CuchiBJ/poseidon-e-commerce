@@ -14,6 +14,7 @@ const actions = {}
 
 const getters = {
   user: state => async (store) => {
+    store.getters.getProducts();
     if (state.currentUser == null) {
       let currentUser = await userSer.getUser();
       store.commit('saveCurrentUser', currentUser);
