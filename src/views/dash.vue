@@ -80,10 +80,7 @@ export default {
   async created(){
     this.loading = true
     this.$store.commit('activateLoading')
-    
     this.user = await this.$store.getters.user(this.$store)
-
-    
     this.$store.commit('deactivateLoading')
     this.loading= false
   },

@@ -22,14 +22,8 @@
               <v-btn elevation="2" large
                 >Filtrar<v-icon>mdi-filter</v-icon></v-btn
               >
-              <v-checkbox
-                v-model="checkbox1"
-                :label="`Oferta`"
-              ></v-checkbox>
-              <v-checkbox
-                v-model="checkbox2"
-                :label="`Colores`"
-              ></v-checkbox>
+              <v-checkbox v-model="checkbox1" :label="`Oferta`"></v-checkbox>
+              <v-checkbox v-model="checkbox2" :label="`Colores`"></v-checkbox>
             </v-col>
           </v-row>
         </v-list-item-content>
@@ -43,72 +37,55 @@
         </v-row>
         <v-row>
           <v-col cols="12">
-            <v-card class="d-flex flex-row" color="gray mt-4">
-              <v-card
-                :loading="loading"
-                class="mx-auto my-12"
-                width="200"
-                height="200"
+            <v-sheet class="mx-auto" elevation="8" max-width="90%">
+              <v-slide-group
+                v-model="model"
+                class="pa-4"
+                active-class="success"
+                show-arrows
               >
-                <template slot="progress">
-                  <v-progress-linear
-                    color="deep-purple"
-                    height="10"
-                    indeterminate
-                  ></v-progress-linear>
-                </template>
+                <v-slide-item
+                  v-for="producto in productos"
+                  :key="producto"
+                  v-slot="{ active, toggle }"
+                >
+                  <v-card
+                    :color="active ? undefined : 'white lighten-1'"
+                    class="ma-4"
+                    height="300"
+                    width="200"
+                    @click="toggle"
+                  >
+                    <v-img
+                      height="150"
+                      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                      ><v-btn class="ml-1" elevation="2" right x-small>
+                        <v-icon>mdi-cart-arrow-down</v-icon>
+                      </v-btn>
+                    </v-img>
 
-                <v-img
-                  height="100"
-                  width="200"
-                  src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-                ></v-img>
-
-                <v-card-title>Cafe Badilico</v-card-title>
-
-                <v-card-text>
-                  <v-row align="center" class="mx-0">
-                    <div class="grey--text ml-4">4.5 (413)</div>
-                  </v-row>
-
-                  <div class="my-4 subtitle-1">$ • Italian, Cafe</div>
-                </v-card-text>
-
-                <v-divider class="mx-4"></v-divider>
-              </v-card>
-              <v-card
-                :loading="loading"
-                class="mx-auto my-12"
-                width="200"
-                height="200"
-              >
-                <template slot="progress">
-                  <v-progress-linear
-                    color="deep-purple"
-                    height="10"
-                    indeterminate
-                  ></v-progress-linear>
-                </template>
-
-                <v-img
-                  height="100"
-                  width="200"
-                  src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-                ></v-img>
-
-                <v-card-title>Cafe Badilico</v-card-title>
-
-                <v-card-text>
-                  <v-row align="center" class="mx-0">
-                    <div class="grey--text ml-4">4.5 (413)</div>
-                  </v-row>
-
-                  <div class="my-4 subtitle-1">$ • Italian, Cafe</div>
-                </v-card-text>
-
-                <v-divider class="mx-4"></v-divider>
-              </v-card>
-            </v-card>
+                    <v-card-title class="d-flex flex-column">
+                      <p class="font-weight-light text-center">
+                        {{ producto.name }}
+                      </p>
+                      <p class="font-weight-light text-center">$
+                        {{ producto.price }}
+                      </p>
+                    </v-card-title>
+                    <v-row class="fill-height" align="center" justify="center">
+                      <v-scale-transition>
+                        <v-icon
+                          v-if="active"
+                          color="white"
+                          size="48"
+                          v-text="'mdi-close-circle-outline'"
+                        ></v-icon>
+                      </v-scale-transition>
+                    </v-row>
+                  </v-card>
+                </v-slide-item>
+              </v-slide-group>
+            </v-sheet>
           </v-col>
         </v-row>
         <v-row>
@@ -118,70 +95,55 @@
         </v-row>
         <v-row>
           <v-col cols="12" class="">
-            <v-card class="d-flex flex-row" color="gray mt-4">
-              <v-card
-                :loading="loading"
-                class="mx-auto my-12"
-                width="200"
-                height="200"
+            <v-sheet class="mx-auto" elevation="8" max-width="90%">
+              <v-slide-group
+                v-model="model"
+                class="pa-4"
+                active-class="success"
+                show-arrows
               >
-                <template slot="progress">
-                  <v-progress-linear
-                    color="deep-purple"
-                    height="10"
-                    indeterminate
-                  ></v-progress-linear>
-                </template>
+                <v-slide-item
+                  v-for="producto in productos"
+                  :key="producto"
+                  v-slot="{ active, toggle }"
+                >
+                  <v-card
+                    :color="active ? undefined : 'white lighten-1'"
+                    class="ma-4"
+                    height="300"
+                    width="200"
+                    @click="toggle"
+                  >
+                    <v-img
+                      height="150"
+                      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                      ><v-btn class="ml-1" elevation="2" right x-small>
+                        <v-icon>mdi-cart-arrow-down</v-icon>
+                      </v-btn>
+                    </v-img>
 
-                <v-img
-                  height="100"
-                  width="200"
-                  src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-                ></v-img>
-
-                <v-card-title>Cafe Badilico</v-card-title>
-
-                <v-card-text>
-                  <v-row align="center" class="mx-0">
-                    <div class="grey--text ml-4">4.5 (413)</div>
-                  </v-row>
-                  <div class="my-4 subtitle-1">$ • Italian, Cafe</div>
-                </v-card-text>
-
-                <v-divider class="mx-4"></v-divider>
-              </v-card>
-              <v-card
-                :loading="loading"
-                class="mx-auto my-12"
-                width="200"
-                height="200"
-              >
-                <template slot="progress">
-                  <v-progress-linear
-                    color="deep-purple"
-                    height="10"
-                    indeterminate
-                  ></v-progress-linear>
-                </template>
-
-                <v-img
-                  height="100"
-                  width="200"
-                  src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-                ></v-img>
-
-                <v-card-title>Cafe Badilico</v-card-title>
-
-                <v-card-text>
-                  <v-row align="center" class="mx-0">
-                    <div class="grey--text ml-4">4.5 (413)</div>
-                  </v-row>
-                  <div class="my-4 subtitle-1">$ • Italian, Cafe</div>
-                </v-card-text>
-
-                <v-divider class="mx-4"></v-divider>
-              </v-card>
-            </v-card>
+                    <v-card-title class="d-flex flex-column">
+                      <p class="font-weight-light text-center">
+                        {{ producto.name }}
+                      </p>
+                      <p class="font-weight-light text-center">$
+                        {{ producto.price }}
+                      </p>
+                    </v-card-title>
+                    <v-row class="fill-height" align="center" justify="center">
+                      <v-scale-transition>
+                        <v-icon
+                          v-if="active"
+                          color="white"
+                          size="48"
+                          v-text="'mdi-close-circle-outline'"
+                        ></v-icon>
+                      </v-scale-transition>
+                    </v-row>
+                  </v-card>
+                </v-slide-item>
+              </v-slide-group>
+            </v-sheet>
           </v-col>
         </v-row>
       </v-col>
@@ -194,9 +156,10 @@ export default {
   name: "productos",
   data() {
     return {
+      productos: [],
+      model: null,
       searchClosed: true,
       user: null,
-      productos: [],
     };
   },
   components: {},
@@ -205,9 +168,10 @@ export default {
       return this.user.rol == "admin";
     },
   },
-  created(){
-      this.productos=this.$store.getters.productos(this.$store)
-  }
+  async created() {
+    this.productos = await this.$store.getters.getProducts(this.$store);
+    console.log(this.productos);
+  },
 };
 </script>
 
