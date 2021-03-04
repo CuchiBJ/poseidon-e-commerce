@@ -11,7 +11,7 @@
 
           <v-spacer></v-spacer>
 
-          <v-toolbar-items>
+          <v-toolbar-items v-if='isAdmin'>
             <v-list-item> Panel </v-list-item>
             <v-list-item> <router-link to="/productos"> Productos </router-link></v-list-item>
             <v-list-item> Compras </v-list-item>
@@ -21,7 +21,7 @@
             <v-list-item> Configuracion </v-list-item>
           </v-toolbar-items>
 
-          <v-toolbar-items>
+          <v-toolbar-items v-else>
             <v-list-item> Home </v-list-item>
             <v-list-item><router-link to="/productos"> Productos </router-link></v-list-item>
             <v-list-item> Compras </v-list-item>
@@ -41,7 +41,9 @@ export default {
   name: "NavBar",
   data() {
     return {
-      user: null,
+      user: {
+        rol:''
+      },
     }
   },
   components: {
