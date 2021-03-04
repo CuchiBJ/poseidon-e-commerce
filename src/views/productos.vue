@@ -45,44 +45,51 @@
                 show-arrows
               >
                 <v-slide-item
-                  v-for="producto in productos"
-                  :key="producto"
+                  v-for="product in products"
+                  :key="product.id"
                   v-slot="{ active, toggle }"
                 >
-                  <v-card
-                    :color="active ? undefined : 'white lighten-1'"
-                    class="ma-4"
-                    height="300"
-                    width="200"
-                    @click="toggle"
-                  >
-                    <v-img
-                      height="150"
-                      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-                      ><v-btn class="ml-1" elevation="2" right x-small>
-                        <v-icon>mdi-cart-arrow-down</v-icon>
-                      </v-btn>
-                    </v-img>
+                  <router-link to="/producto">
+                    <v-card
+                      :color="active ? undefined : 'white lighten-1'"
+                      class="ma-4"
+                      height="300"
+                      width="200"
+                      @click="toggle"
+                    >
+                      <v-img
+                        height="150"
+                        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                        ><v-btn class="ml-1" elevation="2" right x-small>
+                          <v-icon>mdi-cart-arrow-down</v-icon>
+                        </v-btn>
+                      </v-img>
 
-                    <v-card-title class="d-flex flex-column">
-                      <p class="font-weight-light text-center">
-                        {{ producto.name }}
-                      </p>
-                      <p class="font-weight-light text-center">$
-                        {{ producto.price }}
-                      </p>
-                    </v-card-title>
-                    <v-row class="fill-height" align="center" justify="center">
-                      <v-scale-transition>
-                        <v-icon
-                          v-if="active"
-                          color="white"
-                          size="48"
-                          v-text="'mdi-close-circle-outline'"
-                        ></v-icon>
-                      </v-scale-transition>
-                    </v-row>
-                  </v-card>
+                      <v-card-title class="d-flex flex-column">
+                        <p class="font-weight-light text-center">
+                          {{ product.name }}
+                        </p>
+                        <p class="font-weight-light text-center">
+                          $
+                          
+                        </p>
+                      </v-card-title>
+                      <v-row
+                        class="fill-height"
+                        align="center"
+                        justify="center"
+                      >
+                        <v-scale-transition>
+                          <v-icon
+                            v-if="active"
+                            color="white"
+                            size="48"
+                            v-text="'mdi-close-circle-outline'"
+                          ></v-icon>
+                        </v-scale-transition>
+                      </v-row>
+                    </v-card>
+                  </router-link>
                 </v-slide-item>
               </v-slide-group>
             </v-sheet>
@@ -103,8 +110,8 @@
                 show-arrows
               >
                 <v-slide-item
-                  v-for="producto in productos"
-                  :key="producto"
+                  v-for="product in products"
+                  :key="product.id"
                   v-slot="{ active, toggle }"
                 >
                   <v-card
@@ -124,10 +131,11 @@
 
                     <v-card-title class="d-flex flex-column">
                       <p class="font-weight-light text-center">
-                        {{ producto.name }}
+                        {{ product.name }}
                       </p>
-                      <p class="font-weight-light text-center">$
-                        {{ producto.price }}
+                      <p class="font-weight-light text-center">
+                        $
+                        
                       </p>
                     </v-card-title>
                     <v-row class="fill-height" align="center" justify="center">
@@ -153,10 +161,10 @@
 
 <script>
 export default {
-  name: "productos",
+  name: "products",
   data() {
     return {
-      productos: [],
+      products: [],
       model: null,
       searchClosed: true,
       user: null,
@@ -169,7 +177,7 @@ export default {
     },
   },
   async created() {
-    this.productos = await this.$store.getters.getProducts(this.$store);
+    this.products = await this.$store.getters.getProducts(this.$store);
     console.log(this.productos);
   },
 };
