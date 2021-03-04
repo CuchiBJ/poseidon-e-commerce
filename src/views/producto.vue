@@ -18,7 +18,7 @@
           <h1 class="price display-1 ml-2">$</h1>
         </div>
 
-        <v-card class="mx-auto ml-5 mt-3" max-width="344" outlined>
+        <v-card class="mx-auto ml-5 mt-3" max-width="100%" outlined>
           <v-list-item three-line>
             <v-list-item-content>
               <div class="overline mb-4">Características</div>
@@ -80,28 +80,24 @@
               <div class="list-group font-weight-light d-flex">
                 <v-list class="list-group-item ml-1">
                   <v-checkbox
-                    v-model="ex4"
                     label="Rojo"
                     color="red"
                   ></v-checkbox>
                 </v-list>
                 <v-list class="list-group-item ml-1">
                   <v-checkbox
-                    v-model="ex4"
                     label="Azul"
                     color="blue"
                   ></v-checkbox>
                 </v-list>
                 <v-list class="list-group-item ml-1">
                   <v-checkbox
-                    v-model="ex4"
                     label="Amarillo"
                     color="yellow"
                   ></v-checkbox>
                 </v-list>
                 <v-list class="list-group-item ml-1">
                   <v-checkbox
-                    v-model="ex4"
                     label="Verde"
                     color="green"
                   ></v-checkbox>
@@ -113,8 +109,8 @@
       </div>
     </div>
     <div>
-      <v-card class="mx-5 my-5" width="1000">
-        <h3 class="display-3">Descripcion</h3>
+      <v-card class="mx-5 my-5" width="98%" height="100%">
+        <h3 class="display-3 p-2">Descripcion</h3>
         <v-card-text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut
           scelerisque massa. Vestibulum quis ultrices elit, eu pharetra nisi.
