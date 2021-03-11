@@ -21,6 +21,15 @@ const getters = {
     } else {
       return state.products;
     }
+  },
+  getProduct: state => async (store, idIn) => {
+    if (state.products == null) {
+      let auxProducts = await productDb.getProducts();
+      store.commit('saveProducts', auxProducts);
+      return auxProducts.find(id == idIn);
+    } else {
+      return state.products.find(id == idIn);
+    }
   }
 }
 
