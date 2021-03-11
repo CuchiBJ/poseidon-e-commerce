@@ -26,9 +26,9 @@ const getters = {
     if (state.products == null) {
       let auxProducts = await productDb.getProducts();
       store.commit('saveProducts', auxProducts);
-      return auxProducts.find(id == idIn);
+      return auxProducts.find((product) => product.id == idIn );
     } else {
-      return state.products.find(id == idIn);
+      return state.products.find((product) => product.id == idIn);
     }
   }
 }
