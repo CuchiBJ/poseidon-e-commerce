@@ -64,7 +64,7 @@ export default {
         'mdi-instagram',
       ],
       user: null,
-      loading: null,
+      loading: true,
       sucursal: null,
     }
   },
