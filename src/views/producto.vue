@@ -142,7 +142,7 @@ export default {
     console.log(this.product);
     this.product = await this.$store.getters.getProduct(
       this.$store,
-      this.$router.params.id
+      this.$route.params.id
     );
     console.log(this.product);
   },

@@ -1,14 +1,10 @@
 import { productsCollection} from '@/firebase.js'; 
 import {Product} from '../model/product.js'
+import {Variant} from '../model/variant.js'
 
 export default {
   async getProducts(){
     let products = [];
-    /* products.push(new Product(1, "desc1", "brand1", "name1", "supplier1", ["size1", "size1"], ["color1", "color1"]));
-    products.push(new Product(2, "desc2", "brand2", "name2", "supplier2", ["size2", "size2"], ["color2", "color2"]));
-    products.push(new Product(2, "desc2", "brand2", "name3", "supplier2", ["size2", "size2"], ["color2", "color2"]));
-    products.push(new Product(2, "desc2", "brand2", "name4", "supplier2", ["size2", "size2"], ["color2", "color2"]));
-    products.push(new Product(2, "desc2", "brand2", "name5", "supplier2", ["size2", "size2"], ["color2", "color2"])); */
     products = await productsCollection
       .get()
       .then((querySnapshot) => {
@@ -26,6 +22,23 @@ export default {
     console.log(products);
     return products; 
   },
+  async getVariants(prodId){
+    let variants = [];
+    variants = await productsCollection
+      .doc(prodId).collection("variants")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          variants.push(new Variant(doc.id, doc.data().price, doc.data().buyPrice, doc.data().color, doc.data().size, doc.data().quantity));
+        });
+        return variants;
+      })
+      .catch((error) => {
+        console.log("Error getting variants: ", error);
+        return variants;
+      });
+    return variants; 
+  },
   createProduct(){
     
   },
@@ -34,8 +47,5 @@ export default {
   },
   deleteProduct(){
     
-  },
-  getVariant(){
-
-  }
+  } 
 }

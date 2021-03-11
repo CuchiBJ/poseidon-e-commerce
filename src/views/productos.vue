@@ -49,7 +49,7 @@
                   :key="product.id"
                   v-slot="{ active, toggle }"
                 >
-                  <router-link to="/producto">
+                  <router-link :to="{name: 'producto', params:{id: product.id}}">
                     <v-card
                       :color="active ? undefined : 'white lighten-1'"
                       class="ma-4"

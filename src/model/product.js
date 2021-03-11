@@ -9,14 +9,14 @@ export class Product {
     this.sizes = sizes;
     this.colors = colors;
     this.categories = categories;
-    this.variant = {
+    this.variants = [{
       id: "",
       price: "",
       buyPrice: "",
       color: "",
       size: "",
       quantity: ""
-    }
+    }]
   }
 
 }
