@@ -39,8 +39,8 @@ export default {
       });
     return variants; 
   },
-  createProduct(){
-    
+  createProduct(product){
+    return product
   },
   updateProduct(){
     

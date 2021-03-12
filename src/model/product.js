@@ -1,3 +1,5 @@
+import {Variant} from './variant.js'
+
 export class Product {
 
   constructor(id, description, brand, name, supplier, sizes, colors, categories){
@@ -17,6 +19,26 @@ export class Product {
       size: "",
       quantity: ""
     }]
+  }
+
+  setVariant(variant){
+    this.variants.push(variant);
+  }
+
+  createVariant(id,price,buyPrice,color,size,quantity){
+    let variant = new Variant(id,price,buyPrice,color,size,quantity);
+    this.setVariant(variant); 
+  }
+
+  makeVariants(){
+    this.variants = [];
+    let cont = 1;
+    this.sizes.forEach(size => {
+      this.colors.forEach(color => {
+        this.createVariant("var"+cont, 0, 0, color, size, 0);
+        cont++;
+      });
+    });
   }
 
 }

@@ -1,5 +1,5 @@
 <template>
-  <v-container-fluid class="fill-height py-3">
+  <v-container :fluid="true" class="fill-height py-3">
     <v-row class="fill-height">
       <v-col cols="3">
         <v-list-item-content>
@@ -156,7 +156,7 @@
         </v-row>
       </v-col>
     </v-row>
-  </v-container-fluid>
+  </v-container>
 </template>
 
 <script>
@@ -168,6 +168,9 @@ export default {
       model: null,
       searchClosed: true,
       user: null,
+      checkbox1: false,
+      checkbox2: false,
+      cont: 0
     };
   },
   components: {},
@@ -177,9 +180,11 @@ export default {
     },
   },
   async created() {
+    console.log(this.cont)
     this.products = await this.$store.getters.getProducts(this.$store);
-    console.log(this.productos);
-  },
+    console.log(this.products);
+    this.cont++
+  },  
 };
 </script>
 
