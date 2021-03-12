@@ -15,91 +15,71 @@
       <div class="d-flex-row">
         <div class="d-flex">
           <h1 class="display-1 ml-5">{{ product.name }}</h1>
-          <h1 class="price display-1 ml-2">$</h1>
+          <h1 class="price display-1 ml-2">
+            $ {{ product.variants[1].price }}
+          </h1>
         </div>
 
         <div class="d-flex flex-row">
-          <v-card class="mx-auto ml-5 mt-3" max-width="100%" outlined>
+          <v-card
+            class="mx-auto ml-5 mt-3"
+            max-width="100%"
+            min-width="80%"
+            outlined
+          >
             <v-list-item three-line>
               <v-list-item-content>
-                <v-card class="p-3">
-                  <div class="overline mb-4">Descripcion</div>
+                <v-card class="p-1">
+                  <div class="overline">Descripcion</div>
                   <v-list-item-subtitle>
-                    <h3>{{product.description}}</h3>
+                    <h3>{{ product.description }}</h3>
                   </v-list-item-subtitle>
-                  <h5 class="overline mb-1">Talles</h5>
+                  <h5 class="overline mt-3">Talles</h5>
                   <div class="list-group font-weight-light d-flex">
-                    <v-list class="list-group-item ml-2">
+                    <v-list
+                      class="list-group-item ml-2"
+                      v-for="size in product.sizes"
+                      :key="size"
+                    >
                       <input
                         class="form-check-input me-1"
                         type="checkbox"
                         value=""
                         aria-label="..."
                       />
-                      S
-                    </v-list>
-                    <v-list class="list-group-item ml-2">
-                      <input
-                        class="form-check-input me-1"
-                        type="checkbox"
-                        value=""
-                        aria-label="..."
-                      />
-                      M
-                    </v-list>
-                    <v-list class="list-group-item ml-2">
-                      <input
-                        class="form-check-input me-1"
-                        type="checkbox"
-                        value=""
-                        aria-label="..."
-                      />
-                      L
-                    </v-list>
-                    <v-list class="list-group-item ml-2">
-                      <input
-                        class="form-check-input me-1"
-                        type="checkbox"
-                        value=""
-                        aria-label="..."
-                      />
-                      XL
-                    </v-list>
-                    <v-list class="list-group-item ml-2">
-                      <input
-                        class="form-check-input me-1"
-                        type="checkbox"
-                        value=""
-                        aria-label="..."
-                      />
-                      XXL
+                      {{ size }}
                     </v-list>
                   </div>
-                  <h5 class="overline mb-1">Colores</h5>
+                  <h5 class="overline mt-3">Colores</h5>
                   <div class="list-group font-weight-light d-flex">
-                    <v-list class="list-group-item ml-1">
-                      <v-checkbox label="Rojo" color="red"></v-checkbox>
-                    </v-list>
-                    <v-list class="list-group-item ml-1">
-                      <v-checkbox label="Azul" color="blue"></v-checkbox>
-                    </v-list>
-                    <v-list class="list-group-item ml-1">
-                      <v-checkbox label="Amarillo" color="yellow"></v-checkbox>
-                    </v-list>
-                    <v-list class="list-group-item ml-1">
-                      <v-checkbox label="Verde" color="green"></v-checkbox>
+                    <v-list
+                      class="list-group-item ml-1"
+                      v-for="color in product.colors"
+                      :key="color"
+                    >
+                      <input
+                        class="form-check-input me-1"
+                        type="checkbox"
+                        value=""
+                        aria-label="..."
+                      />
+                      {{ color }}
                     </v-list>
                   </div>
                 </v-card>
               </v-list-item-content>
             </v-list-item>
           </v-card>
-          <v-card class="mx-auto ml-5 mt-3" max-width="100%" outlined>
+          <v-card
+            class="mx-auto ml-5 mt-3"
+            max-width="100%"
+            min-width="80%"
+            outlined
+          >
             <v-list-item three-line>
               <v-list-item-content>
                 <v-card class="p-3">
                   <div class="overline mb-4">Formas de pago</div>
-                  
                 </v-card>
               </v-list-item-content>
             </v-list-item>
