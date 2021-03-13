@@ -7,6 +7,14 @@ const state = {
 const mutations = {
   saveProducts: (state, products) =>{
     state.products = products;
+    products[0].makeVariants();
+    console.log(products[0]);
+  },
+  loadProduct: async (state, product) =>{
+    let res = await productDb.createProduct(product)
+    if (res != null){
+      state.products.push(product)
+    }
   }
 }
  
@@ -17,9 +25,9 @@ const getters = {
     if (state.products == null) {
       let auxProducts = await productDb.getProducts();
       store.commit('saveProducts', auxProducts);
-      return auxProducts;
+      return state.products; 
     } else {
-      return state.products;
+      return state.products; 
     }
   },
   getProduct: state => async (store, idIn) => {
