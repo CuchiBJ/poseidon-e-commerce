@@ -31,6 +31,9 @@
       <v-divider inset vertical> </v-divider>
       <v-col cols="8">
         <v-row>
+            <div style="position: absolute; right: 4%; top: 13%; display: block">
+             <router-link to="/addProducto"> Agregar producto </router-link>
+            </div>
           <v-col cols="12" class="d-flex justify-center">
             <h1 class="display-1 text-center mt-10">Las ofertas</h1>
           </v-col>
@@ -49,7 +52,9 @@
                   :key="product.id"
                   v-slot="{ active, toggle }"
                 >
-                  <router-link :to="{name: 'producto', params:{id: product.id}}">
+                  <router-link
+                    :to="{ name: 'producto', params: { id: product.id } }"
+                  >
                     <v-card
                       :color="active ? undefined : 'white lighten-1'"
                       class="ma-4"
@@ -69,10 +74,7 @@
                         <p class="font-weight-light text-center">
                           {{ product.name }}
                         </p>
-                        <p class="font-weight-light text-center">
-                          $
-                          
-                        </p>
+                        <p class="font-weight-light text-center">$</p>
                       </v-card-title>
                       <v-row
                         class="fill-height"
@@ -133,10 +135,7 @@
                       <p class="font-weight-light text-center">
                         {{ product.name }}
                       </p>
-                      <p class="font-weight-light text-center">
-                        $
-                        
-                      </p>
+                      <p class="font-weight-light text-center">$</p>
                     </v-card-title>
                     <v-row class="fill-height" align="center" justify="center">
                       <v-scale-transition>
