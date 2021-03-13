@@ -6,7 +6,7 @@
            <v-card class="elevation-12" dark>
              <v-toolbar flat>
                <v-toolbar-title>Iniciar Sesion</v-toolbar-title>
-               <v-spacer />
+               <v-spacer /> 
              </v-toolbar>
              <v-card-text align="center" justify="center">
                <router-link to="/">
@@ -29,8 +29,7 @@
    </div>
  </template>
  
- <script>
-
+<script>
  import { auth } from "@/firebase.js";
  export default {
    name: "Login",
@@ -67,8 +66,6 @@
            console.log(error);
            return;
          });
-        let user = this.$store.getters.user(this.$store)
-        console.log(user);
         this.$router.push({ name: "dash" });
         this.$store.commit('deactivateLoading')
         this.$store.commit('activeSnack', 'Sesion iniciada')

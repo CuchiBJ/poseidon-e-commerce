@@ -1,5 +1,5 @@
 <template>
-  <v-container-fluid class="fill-height py-3">
+  <v-container :fluid="true" class="fill-height py-3">
     <div class="d-inline-flex">
       <v-card class="ml-5">
         <v-img
@@ -107,7 +107,7 @@
         </v-card-text>
       </v-card>
     </div>
-  </v-container-fluid>
+  </v-container>
 </template>
 
 <script>

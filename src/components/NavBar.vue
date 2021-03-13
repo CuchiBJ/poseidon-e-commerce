@@ -6,7 +6,6 @@
           src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
         >
           
-
           <v-toolbar-title>Admin Menú</v-toolbar-title>
 
           <v-spacer></v-spacer>
@@ -28,7 +27,7 @@
             <v-list-item> Carrito </v-list-item>
           </v-toolbar-items>
 
-          <v-btn icon>
+          <v-btn icon @click="logout()">
             <v-icon>mdi-export</v-icon>
           </v-btn>
         </v-toolbar>
@@ -36,7 +35,7 @@
 </template>
 
 <script>
-
+  import { auth } from "@/firebase.js";
 export default {
   name: "NavBar",
   data() {
@@ -54,11 +53,16 @@ export default {
     }
   },
   async created(){
-    this.user = await this.$store.getters.user(this.$store)
-
+    if (this.$router.currentRoute.name != "login"){
+      this.user = await this.$store.getters.user(this.$store)
+    }
   },
   methods: {
-    
+    logout(){
+      auth.signOut();
+      this.$store.commit('saveCurrentUser', null);
+      this.$router.push({ name: "Login" });
+    }
   }
 };
 </script>

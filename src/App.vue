@@ -7,7 +7,7 @@
       top
       color="orange accent-4"
     ></v-progress-linear>
-    <Nav v-if="isLoginPage"></Nav>
+    <Nav v-if="bol"></Nav>
     <router-view />
     <v-snackbar v-model="$store.state.snackBar" timeout="4000" top>
       {{ $store.state.snackText }}
@@ -22,7 +22,8 @@
     name: "App",
     data(){
       return {
-        page: null
+        page: null,
+        bol: false
       }
     },
     components:{
@@ -30,6 +31,11 @@
     },
     updated(){
       this.page = this.$router.currentRoute.name;
+      if (this.page == 'Login'){
+        this.bol = false
+      } else{
+        this.bol = true
+      }
     },
     computed:{
       isLoginPage(){

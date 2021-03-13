@@ -1,7 +1,7 @@
 <template>
   <v-main>
     <v-container class="fill-height" fluid >
-      <v-container class="d-flex flex-column align-center justify-center fill-height" v-if="loading">
+      <v-container class="d-flex flex-column align-center justify-center fill-height" v-if="loadingp">
         <v-progress-circular
           indeterminate
           color="blue accent-4"
@@ -64,8 +64,7 @@ export default {
         'mdi-instagram',
       ],
       user: null,
-      loading: true,
-      sucursal: null,
+      loadingp: true,
     }
   },
   components: {
@@ -73,16 +72,21 @@ export default {
     ClientPanel
   },
   computed:{
-    isAdmin(){    
+    isAdmin(){ 
+      console.log(this.user)
       return this.user.rol == "admin";
     }
   },
   async created(){
-    this.loading = true
+    this.loadingp = true
     this.$store.commit('activateLoading')
     this.user = await this.$store.getters.user(this.$store)
-    this.$store.commit('deactivateLoading')
-    this.loading= false
+    if (this.user == null) {
+      console.log("problemss")
+    } else {
+      this.$store.commit('deactivateLoading')
+      this.loadingp= false
+    }
   },
   methods: {
     

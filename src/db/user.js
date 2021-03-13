@@ -3,8 +3,10 @@ import { User } from '../model/user.js'
 
 export default {
   async getUser(){
+    console.log(auth)
     if (auth.currentUser) { 
-      let user = await usersCollection
+      
+      let user = await usersCollection 
         .doc(auth.currentUser.uid)
         .get()
         .then(function (doc) {
