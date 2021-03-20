@@ -10,6 +10,7 @@ const mutations = {
     state.snackText = text
   },
   activateLoading: (state) =>{
+    console.log('activado')
     state.loading = true
   },
   deactivateLoading: (state) =>{

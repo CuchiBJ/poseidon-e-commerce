@@ -17,6 +17,13 @@
             required
           ></v-text-field>
 
+          <v-text-field
+            v-model="product.brand"
+            label="Marca"
+            width="30%"
+            required
+          ></v-text-field>
+
           <h5 class="overline mt-3">Colores</h5>
                   <div class="list-group font-weight-light d-flex">
                     <v-list
@@ -31,6 +38,7 @@
                         type="checkbox"
                         :color=color.name
                         aria-label="..."
+                        @click="addColor(color)"
                       />
                     </v-list>
                   </div>
@@ -103,15 +111,20 @@ export default {
     salePrices:[{id:0, price:" "}],
     cant:1
   }),
-  created(){
-    console.log(this.product)   
-  },
   methods: {
     addSize(){
       this.product.sizes.push({id: this.cant, size:""})
       this.prices.push({id: this.cant, price:0})
       this.salePrices.push({id: this.cant, price:0})
       this.cant++;
+    },
+
+    addColor(color){
+      if (this.product.haveColor(color)){
+        this.product.deleteColor(color)
+      } else {
+        this.product.addColor(color)
+      }
     },
 
     addProduct(){
