@@ -15,7 +15,7 @@
             <v-list-item> <router-link to="/productos"> Productos </router-link></v-list-item>
             <v-list-item> Compras </v-list-item>
             <v-list-item> Ventas </v-list-item>
-            <v-list-item> Clientes </v-list-item>
+            <v-list-item><router-link to="/clientes"> Clientes </router-link></v-list-item>
             <v-list-item> Proovedores </v-list-item>
             <v-list-item> Configuracion </v-list-item>
           </v-toolbar-items>
