@@ -39,7 +39,35 @@ export default {
       });
     return variants; 
   },
-  createProduct(product){
+  async createProduct(product){
+    await productsCollection.add({
+      description : product.description,
+      brand : product.brand,
+      name : product.name,
+      supplier : product.supplier,
+      sizes : product.sizes,
+      colors : product.colors,
+      categories : product.categories
+    })
+    .then(async (docRef) => {
+      /* if (producto.imagen){
+        await storageRef.ref(`productos/${docRef.id}`)
+        .put(producto.imagen)
+        .then((response) => {
+          console.log("Image successfully stored!");
+          response.ref.getDownloadURL()
+          .then((downloadURL) => {
+            producto.imagen = downloadURL;
+            })       
+        }); */
+        console.log("producto cargado")
+        product.id = docRef.id;
+      /* } */
+    })
+    .catch((error) => {
+      console.error("no se cargo el producto: ", error);
+    });
+    console.log(product)
     return product
   },
   updateProduct(){
