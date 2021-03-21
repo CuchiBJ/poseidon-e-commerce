@@ -41,4 +41,16 @@ export class Product {
     });
   }
 
+  haveColor(color){
+    this.colors.includes(color);
+  }
+
+  deleteColor(color){
+    this.colors.splice(this.colors.indexOf(color));
+  } 
+
+  addColor(color){
+    this.colors.push(color);
+  }
+
 }

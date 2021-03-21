@@ -40,6 +40,9 @@ const getters = {
       prod = state.products.find((product) => product.id == idIn)
     }
     prod.variants= await productDb.getVariants(idIn);
+    if (prod.variants.length == 0) {
+      prod.makeVariants();
+    }
     console.log(prod)
     return prod;
   }

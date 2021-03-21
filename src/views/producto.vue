@@ -128,12 +128,13 @@ export default {
     },
   },
   async created() {
-    console.log(this.product);
+    console.log("entro el crea")
+    this.$store.commit('activateLoading')
     this.product = await this.$store.getters.getProduct(
       this.$store,
       this.$route.params.id
     );
-    console.log(this.product);
+    this.$store.commit('deactivateLoading')
   },
 };
 </script>
