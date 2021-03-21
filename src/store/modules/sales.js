@@ -15,7 +15,7 @@ const actions = {}
 const getters = {
   getSales: state => async (store) => {
     if (state.sales == null) {
-      let auxsales = await saleDb.getsales();
+      let auxsales = await saleDb.getSales();
       store.commit('saveSales', auxsales);
       return auxsales;
     } else {

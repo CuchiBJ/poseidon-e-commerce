@@ -4,10 +4,6 @@
       <v-col cols="3">
         <v-list-item-content>
           <v-row>
-            <v-col
-              cols="12"
-              class="d-flex flex-column justify-center align-center"
-            >
               <v-text-field
                 @focus="searchClosed = false"
                 @blur="searchClosed = true"
@@ -24,7 +20,6 @@
               >
               <v-checkbox v-model="checkbox1" :label="`Oferta`"></v-checkbox>
               <v-checkbox v-model="checkbox2" :label="`Colores`"></v-checkbox>
-            </v-col>
           </v-row>
         </v-list-item-content>
       </v-col>

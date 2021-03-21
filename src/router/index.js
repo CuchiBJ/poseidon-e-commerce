@@ -40,6 +40,24 @@ const routes = [
     name: "clientes",
     component:() =>
       import("../views/Clientes.vue"),
+  },
+  {
+    path: "/admindash",
+    name: "admindash",
+    component:() =>
+      import("../views/AdminDash.vue"),
+  },
+  {
+    path: "/ventas",
+    name: "ventas",
+    component:() =>
+      import("../views/Ventas.vue"),
+  },
+  {
+    path: "/venta/:id",
+    name: "venta",
+    component:() =>
+      import("../views/Venta.vue"),
   }
 ]
 
